@@ -44,7 +44,7 @@ for i in range(0, 1000):
     fileUrl = "https://jaccount.sjtu.edu.cn/jaccount/" + link
     savePath = getPath(download, i)
     urlretrieve(fileUrl, savePath)
-    cleanImage(savePath)
+    # cleanImage(savePath)
     waitTime = random.randint(2, 5) # wait for a moment to avoid checking water meter
     print(i, ":", "wait", waitTime, "seconds")
     time.sleep(waitTime)
