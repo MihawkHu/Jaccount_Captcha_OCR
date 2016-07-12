@@ -100,7 +100,7 @@ function [num, max_wid, max_len] = split_captcha(filePath, idx)
         end
         
         % save
-        save_path = strcat("./captcha_splited/", num2str(idx + k - 1), ".jpg");
+        save_path = strcat("./captcha_splited/", num2str(idx + k - 1), ".bmp");
         imwrite(splited_img, save_path);
     end
     
