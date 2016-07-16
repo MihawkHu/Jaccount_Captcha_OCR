@@ -20,7 +20,7 @@ for i = 1 : size(idx_set, 1);
         X = img;
     end
     
-    if i != 1
+    if i ~= 1
         X = [X; img];
     end
     
@@ -37,7 +37,7 @@ for i = 1 : size(idx_set_test, 1);
         X_test = img;
     end
     
-    if i != 1
+    if i ~= 1
         X_test = [X_test; img];
     end
     
