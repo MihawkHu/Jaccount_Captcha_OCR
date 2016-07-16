@@ -11,7 +11,7 @@ using namespace std;
 int main()
 {
     ifstream fin("./tag_results.txt");
-    ofstream fout("./tag_results_new");
+    ofstream fout("./tag_results_new.txt");
     
     int idx;
     string str;
