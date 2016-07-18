@@ -5,15 +5,15 @@
 
 
 % load training set and test set
-tt = importdata("../tag_captcha/tag_results_new.txt");
-y = tt(1 : 4000, 2);
-y_test = tt(4001: end, 2);
+tt = importdata('../tag_captcha/tag_results_new.txt');
+y = tt(1 : 4000, 2) + 1;
+y_test = tt(4001: end, 2) + 1;
 
 idx_set = tt(1 : 4000, 1);
 for i = 1 : size(idx_set, 1);
-    filePath = strcat("../split_captcha/captcha_splited_resized/", num2str(idx_set(i, 1)), ".bmp");
+    filePath = strcat('../split_captcha/captcha_splited_resized/', num2str(idx_set(i, 1)), '.bmp');
     img = imread(filePath);
-    
+    img = img(:, :, 1);
     img = double(img(:)') / 255.0;
     
     if i == 1
@@ -28,9 +28,9 @@ end
 
 idx_set_test = tt(4001: end, 1);
 for i = 1 : size(idx_set_test, 1);
-    filePath = strcat("../split_captcha/captcha_splited_resized/", num2str(idx_set_test(i, 1)), ".bmp");
+    filePath = strcat('../split_captcha/captcha_splited_resized/', num2str(idx_set_test(i, 1)), '.bmp');
     img = imread(filePath);
-    
+    img = img(:, :, 1);
     img = double(img(:)') / 255.0;
     
     if i == 1
@@ -47,7 +47,7 @@ end
 % size of nn
 input_layer_size  = 600;  % size of each image
 hidden_layer_size = 50;  % it can also be other value
-num_labels = 26;  % there are 26 letters, a--0, b--1, c--2, ..., z--25
+num_labels = 26;  % there are 26 letters, a--1, b--2, c--3, ..., z--26
 
 
 % randomly initialize parameters
@@ -57,7 +57,7 @@ initial_nn_params = [initial_Theta1(:) ; initial_Theta2(:)];
 
 
 % using fimnunc to train nn, iteration number can be set large
-options = optimset('MaxIter', 50);
+options = optimset('MaxIter', 500);
 
 
 % train them, lambda can also be other number to get optimal result
@@ -76,11 +76,16 @@ Theta1 = reshape(nn_params(1:hidden_layer_size * (input_layer_size + 1)), ...
 Theta2 = reshape(nn_params((1 + (hidden_layer_size * (input_layer_size + 1))):end), ...
                  num_labels, (hidden_layer_size + 1));
 
+% save parameters
+save Theta1.txt -ascii Theta1
+save Theta2.txt -ascii Theta2
 
 % get training result, using other test set to test it
 pred = predict(Theta1, Theta2, X);
-fprintf('Traing accuracy: %f\n', mean(double(pred == y)) * 100);
+fprintf('Train accuracy: %f\n', mean(double(pred == y)) * 100);
 
+pred2 = predict(Theta1, Theta2, X_test);
+fprintf('Test accuracy: %f\n', mean(double(pred2 == y_test)) * 100);
 
 
 

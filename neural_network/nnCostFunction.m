@@ -24,6 +24,7 @@ function [J grad] = nnCostFunction(nn_params, input_layer_size, hidden_layer_siz
         Y(i, y(i)) = 1;
     end
     
+    J = 0;
     for i = 1 : m
         J = J + sum(-Y(i, :)' .* log(tmp(i, :)') - (1 - Y(i, :)') .* log(1 - tmp(i, :)')) / m;
     end
