@@ -1,0 +1,40 @@
+body {
+    background: rgb(210, 227, 255);
+    font-family: sans-serif;
+    margin: 50px;
+}
+
+#result,
+#display {
+    background: white;
+    display: inline-block;
+    border: 1px solid #aaa;
+    margin: 30px;
+    min-height: 300px;
+    flex-grow: 1;
+}
+
+#display {
+    text-align: center;
+    font-size: 50px;
+    padding: 10px;
+}
+
+#display img {
+    width: 400px;
+}
+
+#result {
+    font-size: 20px;
+    padding: 30px;
+    min-width: 300px;
+    color: gray;
+}
+
+#result.done {
+    color: black;
+}
+
+#main {
+    display: flex;
+}

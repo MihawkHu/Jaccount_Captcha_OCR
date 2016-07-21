@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Jaccount Captcha OCR Demo</title>
+    
+    <link rel="stylesheet" href="./base.css" />
+</head>
+
+<body>
+    <h1>Jaccount Captcha OCR Demo</h1>
+    
+    <script src="./theta1.js"></script>
+    <script src="./theta2.js"></script>
+    <script src="./ocr.js"></script>
+    
+    <script>
+        function load_file() {
+            var reader = new FileReader();
+            reader.onload = function() {
+                var img = new Image();
+                img.src = reader.result;
+                img.onload = function() {
+                    document.getElementById('display').innerHTML = ''
+                    document.getElementById('display').appendChild(img)
+                    
+                    text = ocr(img);
+                    
+                    document.getElementById('result').className = "done"
+                    document.getElementById('result').innerText = text;
+                }
+            }
+            reader.readAsDataURL(document.getElementById('choose').files[0])
+        }
+    </script>
+
+    <input type="file" onchange="load_file()" id="choose">
+    
+    <div id="main">
+        <div id="display">
+            <p style="font-size: 30px">No file loaded</p>
+            <p style="font-size: 30px"> Please open a file </p>
+        </div>
+        <div id="result"></div>
+    </div>
+</body>
+
+</html>
