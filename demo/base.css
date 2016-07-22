@@ -27,7 +27,7 @@ body {
 #result {
     font-size: 20px;
     padding: 30px;
-    min-width: 300px;
+    min-width: 200px;
     color: gray;
 }
 
@@ -38,3 +38,13 @@ body {
 #main {
     display: flex;
 }
+
+#copyright {
+    margin-top: 30px;
+    text-align: center;
+    position: absolute;
+    width: 95%;
+    font-family: Arail;
+    color: #444444;
+}
+
