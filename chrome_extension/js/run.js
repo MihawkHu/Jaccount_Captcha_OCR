@@ -7,7 +7,8 @@ function run()
     tt.value = text;
 }
 
-window.onload = run;
+window.onload = new function() {run();};
+
 var att = document.getElementById("captcha");
 var btt = att.nextElementSibling;
 btt.onclick = function(){setTimeout(run, 300);}
