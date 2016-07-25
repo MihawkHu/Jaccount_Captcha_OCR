@@ -79,7 +79,7 @@ function ocr(img) {
     var cnt = 0;
     for (j = 0; j < col; ++j) {
         if (info[j] != 0) {
-            if (j == 1 || j == col) {
+            if (j == 0 || j == col) {
                 split_line[cnt++] = j;
             }
             else if ((info[j + 1] == 0 && info[j - 1] != 0) || (info[j + 1] != 0 && info[j - 1] == 0)) {
