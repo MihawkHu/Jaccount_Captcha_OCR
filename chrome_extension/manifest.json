@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "上海交大Jaccount自动填写验证码插件",
-    "version": "1.0",
+    "version": "1.1",
     "description": "Using in Jaccount login page to help input the captcha",
     "icons": {
         "16": "image/icon.png",
@@ -18,7 +18,7 @@
     },
     "content_scripts": [
         {
-            "matches": ["*://jaccount.sjtu.edu.cn/jaccount/login*"],
+            "matches": ["*://jaccount.sjtu.edu.cn/jaccount/jalogin*"],
             "js": [
                 "js/theta1.js",
                 "js/theta2.js",
